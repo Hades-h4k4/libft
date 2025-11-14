@@ -6,7 +6,7 @@
 /*   By: carltruj <carltruj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 11:43:17 by carltruj          #+#    #+#             */
-/*   Updated: 2025/11/10 18:41:10 by carltruj         ###   ########.fr       */
+/*   Updated: 2025/11/14 17:16:02 by carltruj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 unsigned int	ft_strlcat(char *dest, char *src, size_t size)
 {
-	size_t	i;
+	size_t			i;
 	unsigned int	l_dest;
 	unsigned int	l_src;
 
