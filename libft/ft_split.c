@@ -6,7 +6,7 @@
 /*   By: carltruj <carltruj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 16:09:43 by carltruj          #+#    #+#             */
-/*   Updated: 2025/11/14 17:15:46 by carltruj         ###   ########.fr       */
+/*   Updated: 2025/11/16 16:00:57 by carltruj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	c_word(const char *s, char c)
 	}
 	return (o);
 }
+
 char	*g_word(char const *s, char c)
 {
 	char	*word;
@@ -56,11 +57,12 @@ char	*g_word(char const *s, char c)
 
 char	**ft_split(char const *s, char c)
 {
-	size_t i;
-	size_t j;
-	size_t len = c_word(s, c);
-	char **arr = NULL;
+	size_t	i;
+	size_t	j;
+	size_t	len;
+	char	**arr;
 
+	len = c_word(s, c);
 	arr = (char **)malloc((len + 1) * (sizeof(char *)));
 	if (!arr)
 		return (NULL);

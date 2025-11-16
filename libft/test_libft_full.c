@@ -824,11 +824,52 @@ void	test_ft_putnbr_fd(void)
 	//debe ser "-2147483648"
 	if (strcmp(buffer, "-2147483648") != 0)
 	{
-		printf("ft_putnbr_fd:MAL!\n");
+		printf("ft_putnbr_fd:MAL\n");
 		return ;
 	}
 	// Si pasamos todos los tests, imprimimos OK!
-	printf("ft_putnbr_fd:OK!\n");
+	printf("ft_putnbr_fd:OK\n");
+}
+
+void test_ft_lstnew(void)
+{
+    int *num = malloc(sizeof(int));
+    if (!num)
+    {
+        printf("ft_lstnew: MAL (malloc fallo en test)\n");
+        return;
+    }
+    *num = 42;
+
+    t_list *nodo = ft_lstnew(num);
+
+    int ok = 1;
+
+    // 1. Debe devolver un nodo válido
+    if (!nodo)
+        ok = 0;
+
+    // 2. El puntero content debe ser el MISMO que enviamos
+    if (nodo && nodo->content != num)
+        ok = 0;
+
+    // 3. next debe ser NULL
+    if (nodo && nodo->next != NULL)
+        ok = 0;
+
+    // 4. El contenido no debe ser alterado
+    if (nodo && *((int *)nodo->content) != 42)
+        ok = 0;
+
+    // Imprimir resultado
+    if (ok)
+        printf("ft_lstnew: OK\n");
+    else
+        printf("ft_lstnew: MAL\n");
+
+    // Liberar
+    free(num);
+    free(nodo);
 }
 
 int	main(void)
@@ -867,5 +908,6 @@ int	main(void)
 	test_ft_putstr_fd();
 	test_ft_putendl_fd();
 	test_ft_putnbr_fd();
+	test_ft_lstnew();
 	return (0);
 }
