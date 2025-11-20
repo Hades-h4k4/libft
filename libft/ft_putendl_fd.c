@@ -6,7 +6,7 @@
 /*   By: carltruj <carltruj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 16:31:55 by carltruj          #+#    #+#             */
-/*   Updated: 2025/11/14 17:30:17 by carltruj         ###   ########.fr       */
+/*   Updated: 2025/11/17 17:59:48 by carltruj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,5 @@
 void	ft_putendl_fd(char *s, int fd)
 {
 	ft_putstr_fd(s, fd);
-	if (s != NULL && *s != '\0')
-		ft_putchar_fd('\n', fd);
+	ft_putchar_fd('\n', fd);
 }

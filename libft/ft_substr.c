@@ -6,7 +6,7 @@
 /*   By: carltruj <carltruj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 17:30:10 by carltruj          #+#    #+#             */
-/*   Updated: 2025/11/14 18:02:00 by carltruj         ###   ########.fr       */
+/*   Updated: 2025/11/17 18:03:05 by carltruj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,12 @@
 
 size_t	ft_substr_len(char const *s, unsigned int start, size_t len)
 {
-	size_t	s_len;
-
 	if (!s)
 		return (0);
-	s_len = ft_strlen(s);
-	if (start >= s_len)
+	if (start > ft_strlen(s))
 		return (0);
-	if (len >= s_len - start)
-		return (s_len - start);
+	if (len > ft_strlen(s + start))
+		len = (ft_strlen(s + start));
 	return (len);
 }
 
@@ -48,7 +45,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	real_len = ft_substr_len(s, start, len);
 	if (real_len == 0)
 	{
-		ft_if_zero();
+		sub = ft_if_zero();
+		return (sub);
 	}
 	sub = malloc((real_len + 1) * sizeof(char));
 	if (!sub)

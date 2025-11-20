@@ -6,53 +6,56 @@
 /*   By: carltruj <carltruj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 17:01:00 by carltruj          #+#    #+#             */
-/*   Updated: 2025/11/16 16:41:33 by carltruj         ###   ########.fr       */
+/*   Updated: 2025/11/17 17:22:09 by carltruj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_numlen(long int n)
+static long int	count(long int nb)
 {
-	int	len;
+	long int	count;
 
-	len = 0;
-	if (n < 0)
+	count = 0;
+	if (nb == 0)
+		return (1);
+	if (nb < 0)
 	{
-		n *= -1;
-		len++;
+		count++;
+		nb *= -1;
 	}
-	while (n != 0)
+	while (nb > 0)
 	{
-		n /= 10;
-		len++;
+		count++;
+		nb = nb / 10;
 	}
-	return (len);
+	return (count);
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(int nb)
 {
-	char		*out;
-	int			len;
-	long int	num;
+	long int	n;
+	long int	i;
+	char		*result;
 
-	num = n;
-	len = ft_numlen(num);
-	out = malloc(len + 1);
-	out[len] = '\0';
-	if (!out)
+	n = nb;
+	i = count(n);
+	result = malloc(sizeof(char) * (i + 1));
+	if (!result)
 		return (NULL);
-	if (num == 0)
-		return (ft_strdup("0"));
-	if (num < 0)
+	result[i] = '\0';
+	if (n == 0)
+		result[0] = '0';
+	if (n < 0)
 	{
-		num *= -1;
-		out[0] = '-';
+		result[0] = '-';
+		n *= -1;
 	}
-	while (num != 0)
+	while (n > 0)
 	{
-		out[--len] = (num % 10) + '0';
-		num /= 10;
+		result[i - 1] = (n % 10) + '0';
+		n = n / 10;
+		i--;
 	}
-	return (out);
+	return (result);
 }
